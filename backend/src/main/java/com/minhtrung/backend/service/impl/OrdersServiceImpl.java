@@ -39,7 +39,11 @@ public class OrdersServiceImpl implements OrdersService{
         existingOrders.setNote(orders.getNote());
          existingOrders.setOrder_date(orders.getOrder_date());
         existingOrders.setStatus(orders.getStatus());
+       
         existingOrders.setTotal_money(orders.getTotal_money());
+        existingOrders.setOrderDetails(orders.getOrderDetails());
+                existingOrders.setUser(orders.getUser());
+
         Orders updateOrders = ordersRepository.save(existingOrders);
         return updateOrders;
     }

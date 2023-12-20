@@ -1,49 +1,40 @@
 import React from "react";
-import{
-    List,
-    Datagrid,
-    TextField,
-    Edit,
-    SimpleForm,
-    EditButton,
-    TextInput,
-    NumberInput,
-    DateInput,
+import {
     Create,
+    Datagrid,
+    DeleteButton,
+    Edit,
+    EditButton,
+    List,
     ReferenceInput,
     SelectInput,
-}from "react-admin";
+    SimpleForm,
+    TextField,
+    TextInput,
+} from "react-admin";
 export const listUser=(props)=>(
     <List {...props}>
         <Datagrid style={{ overflowX: "auto"}}>
             <TextField source="id"/>
-            <TextField source="fullname"/>
-            <TextField source="email"/>
-            <TextField source="phone_number"/>
-            <TextField source="address"/>
-            <TextField source="password"/>
-            <TextField source="created_at"/>
-            <TextField source="updated_at"/>
-            <TextField source="deleted"/>
-            <TextField source="role.name"/>
+            <TextField source="username" />     
+            <TextField source="fullname" />
+            <TextField source="password" />
+            <TextField source="role.name" />
             <EditButton/>
+            <DeleteButton/>
         </Datagrid>
     </List>
 );
 export const editUser = (props)=>(
     <Edit {...props}>
         <SimpleForm>
+             <TextInput source="username"/>
             <TextInput source="fullname"/>
-            <TextInput source="email"/>
-            <NumberInput source="phone-number"/>
-            <TextInput source="address"/>
-            <NumberInput source="password"/>
-            <DateInput source="created_at"/>
-            <DateInput source="updated_at"/>
-            <NumberInput source="deleted"/>
+            <TextInput source="password"/>
+      
             <ReferenceInput
                 label="Role"
-               source="role.id"
+                 source="role.id"
                 reference="roles"
             >
                 <SelectInput optionText="name" />
@@ -55,14 +46,11 @@ export const editUser = (props)=>(
 export const createUser = (props)=>(
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="address"/>
-            <TextInput source="email"/>
+            <TextInput source="username"/>
             <TextInput source="fullname"/>
-            <NumberInput source="password"/>
-            <NumberInput source="phone-number"/>
-            <DateInput source="created_at"/>
-            <DateInput source="updated_at"/>
-            <NumberInput source="deleted"/>
+            <TextInput source="password"/>
+          
+           
             <ReferenceInput
                 label="Role"
                 source="role.id"

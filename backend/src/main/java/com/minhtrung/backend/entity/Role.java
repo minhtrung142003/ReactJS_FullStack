@@ -2,6 +2,8 @@ package com.minhtrung.backend.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +20,8 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    
+     @JsonIgnore
      @OneToMany(mappedBy = "role")
-    private List<User> users;
+    private List<User> user;
 }

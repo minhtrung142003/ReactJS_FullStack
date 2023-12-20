@@ -29,10 +29,10 @@ export const editToken = (props)=>(
             <DateInput source="created_at"/>
             <ReferenceInput
                 label="Users"
-               source="users.id"
+               source="user.id"
                 reference="users"
             >
-                <SelectInput optionText="name" />
+                <SelectInput optionText="fullname" />
             </ReferenceInput>
         </SimpleForm>
     </Edit>
@@ -44,10 +44,10 @@ export const createToken = (props)=>(
             <DateInput source="created_at"/>
             <ReferenceInput
                 label="Users"
-               source="users.id"
+               source="user.id"
                 reference="users"
             >
-                <SelectInput optionText="name" />
+                <SelectInput optionText="fullname" />
             </ReferenceInput>
         </SimpleForm>
     </Create>

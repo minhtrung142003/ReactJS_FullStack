@@ -35,6 +35,8 @@ public class OrderDetailServiceImpl implements OrderDetailService{
         existingOrderDetail.setPrice(orderdetail.getPrice());
         existingOrderDetail.setNum(orderdetail.getNum());
         existingOrderDetail.setTotal_money(orderdetail.getTotal_money());
+        existingOrderDetail.setOrders(orderdetail.getOrders());
+
         OrderDetail updateOrderDetail = orderdetailRepository.save(existingOrderDetail);
         return updateOrderDetail;
     }

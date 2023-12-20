@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.minhtrung.backend.dto.UserDto;
 import com.minhtrung.backend.entity.User;
 // import com.minhtrung.backend.repository.UserRepository;
 
@@ -69,12 +70,17 @@ public class UserController {
 
     // from đăng ký 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody User user) {
-      try {
-        userService.registerUser(user);
-        return ResponseEntity.ok("Đăng ký thành công");
-      } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Lỗi đăng ký");
-      }
+    public ResponseEntity<User> registerUser(@RequestBody UserDto userDto) {
+        User registeredUser = userService.registerUser(userDto);
+        return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody UserDto userDto) {
+        if (userService.loginUser(userDto)) {
+            return ResponseEntity.ok("Login successful");
+        } else {
+            return ResponseEntity.badRequest().body("Invalid credentials");
+        }
     }
 }

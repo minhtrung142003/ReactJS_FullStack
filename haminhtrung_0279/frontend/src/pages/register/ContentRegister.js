@@ -1,11 +1,13 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 const ContentRegister =()=>{
-  const [email, setEmail] = useState("");
+const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullname, setfullname] = useState("");
+  const [address, setaddress] = useState("");
+  const [phone_number, setphone_number] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const navigate = useNavigate();
   const [error, setError] = useState('');
@@ -13,13 +15,15 @@ const ContentRegister =()=>{
 
   
   const handleLogin = () => {
-	if ( email != "" && password != "" && fullname != "" )
+	if ( email != "" && password != "" && fullname != "" && address != "" && phone_number != "")
 	{
 		axios
 		.post(`http://localhost:8080/api/users`, {
 		  email,
 		  password,
 		  fullname,
+		  address,
+		  phone_number,
 		})
 		.then((response) => {
 		  if (response.data.success) {
@@ -86,9 +90,29 @@ const ContentRegister =()=>{
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						/>
-					</div>:
+					</div>
 
+					<div class="form-row">
+						<label>address</label>
+						<input required="address"
+						class="form-control"
+							type="address"
+							placeholder="address"
+							value={address}
+							onChange={(e) => setaddress(e.target.value)}
+						/>
+					</div>
 				
+					<div class="form-row">
+						<label>Phone</label>
+						<input required="phone_number"
+						class="form-control"
+							type="phone_number"
+							placeholder="phone_number"
+							value={phone_number}
+							onChange={(e) => setphone_number(e.target.value)}
+						/>
+					</div>:
 
 					<div class="form-group">
 					{error && <p className="text-danger">{error}</p>}

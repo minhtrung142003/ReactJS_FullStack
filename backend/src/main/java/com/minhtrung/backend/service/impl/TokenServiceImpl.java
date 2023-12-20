@@ -34,6 +34,8 @@ public class TokenServiceImpl implements TokenService{
         Token existingToken = tokenRepository.findById(token.getId()).get();
         existingToken.setToken(token.getToken());
         existingToken.setCreated_at(token.getCreated_at());
+        existingToken.setUser(token.getUser());
+        
         Token updateToken = tokenRepository.save(existingToken);
         return updateToken;
     }

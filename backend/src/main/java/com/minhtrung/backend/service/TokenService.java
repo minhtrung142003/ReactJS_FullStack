@@ -4,9 +4,9 @@ package com.minhtrung.backend.service;
 import com.minhtrung.backend.entity.Token;
 import java.util.List;
 public interface TokenService {
-    public Token createToken(Token Token);
-    public Token getTokenById(Long TokenId);  
+    public Token createToken(Token token);
+    public Token getTokenById(Long tokenId);  
     public List<Token> getAllTokens();
-    public Token updateToken(Token Token);
-    public void deleteToken(Long TokenId);
+    public Token updateToken(Token token);
+    public void deleteToken(Long tokenId);
 }

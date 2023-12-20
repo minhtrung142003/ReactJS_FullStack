@@ -1,67 +1,61 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const ContentLogin = () => {
-  const [user, setUser] = useState({ email: '', password: '' });
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+const UserLogin = () => {
+    const [user, setUser] = useState({ username: '', password: '' });
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-  const handleLogin = async () => {
-      try {
-          const response = await axios.post('http://localhost:8080/api/users/login', user);
-          console.log('Login successful:', response.data);
-          // Chuyển hướng đến trang chủ sau khi đăng nhập thành công
-          navigate('/');
-      } catch (error) {
-          console.error('Login failed:', error.response);
-          setError('Tên đăng nhập hoặc mật khẩu không chính xác. Hãy thử lại.');
-      }
-  };
+    const handleLogin = async () => {
+        try {
+            const response = await axios.post('http://localhost:8080/api/users/login', user);
+            console.log('Login successful:', response.data);
+            // Chuyển hướng đến trang chủ sau khi đăng nhập thành công
+            navigate('/');
+        } catch (error) {
+            console.error('Login failed:', error.response);
+            setError('Tên đăng nhập hoặc mật khẩu không chính xác. Hãy thử lại.');
+        }
+    };
 
-  return (
-    <section className="section-conten padding-y" style={{ height: "84vh" }}>
-      <div className="card mx-auto" style={{ width: "380px", marginTop: "100px" }}>
-        <div className="card-body">
-          <h4 className="card-title mb-4 text-center">Sign in</h4>
-          <form>
-            <div className="form-group">
-              <input
-                className="form-control"
-                placeholder="Email"
-                type="text"
-                value={user.email}
-                onChange={(e) => setUser({ ...user, email: e.target.value})}
-              />
+    return (
+        <div className="container mt-5">
+            <div className="row justify-content-center">
+                <div className="col-md-6">
+                    <div className="card">
+                        <div className="card-body">
+                            <h2 className="text-center mb-4">Đăng Nhập</h2>
+                            <form>
+                                <div className="form-group">
+                                    <label>Tên đăng nhập:</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        value={user.username}
+                                        onChange={(e) => setUser({ ...user, username: e.target.value })}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Mật khẩu:</label>
+                                    <input
+                                        type="password"
+                                        className="form-control"
+                                        value={user.password}
+                                        onChange={(e) => setUser({ ...user, password: e.target.value })}
+                                    />
+                                </div>
+                                {error && <p className="text-danger">{error}</p>}
+                                <button type="button" className="btn btn-danger btn-block" onClick={handleLogin}>
+                                    Đăng Nhập
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="form-group">
-              <input
-                className="form-control"
-                placeholder="Password"
-                type="password"
-                value={user.password}
-                onChange={(e) => setUser({ ...user, password: e.target.value})}
-              />
-            </div>
-            {error && <p className="text-danger">{error}</p>}
-            <div className="form-group">
-              <button
-                type="submit"
-                className="btn btn-danger btn-block"
-                onClick={handleLogin}
-              >
-                Login
-              </button>
-            </div>
-          </form>
         </div>
-      </div>
-      <p className="text-center">
-        Don't have an account? <a href="#">Sign up</a>
-      </p>
-      <br />
-    </section>
-  );
-}
+    );
+};
 
-export default ContentLogin;
+export default UserLogin;
