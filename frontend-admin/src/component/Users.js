@@ -1,40 +1,43 @@
 import React from "react";
-import {
-    Create,
-    Datagrid,
-    DeleteButton,
-    Edit,
-    EditButton,
+import{
     List,
+    Datagrid,
+    TextField,
+    Edit,
+    SimpleForm,
+    EditButton,
+    TextInput,
+    NumberInput,
+    DateInput,
+    Create,
     ReferenceInput,
     SelectInput,
-    SimpleForm,
-    TextField,
-    TextInput,
-} from "react-admin";
+}from "react-admin";
 export const listUser=(props)=>(
     <List {...props}>
         <Datagrid style={{ overflowX: "auto"}}>
             <TextField source="id"/>
-            <TextField source="username" />     
-            <TextField source="fullname" />
-            <TextField source="password" />
-            <TextField source="role.name" />
+            <TextField source="fullname"/>
+            <TextField source="email"/>           
+            <TextField source="address"/>
+           
+            <TextField source="password"/>        
+            <TextField source="role.name"/>
             <EditButton/>
-            <DeleteButton/>
         </Datagrid>
     </List>
 );
 export const editUser = (props)=>(
     <Edit {...props}>
         <SimpleForm>
-             <TextInput source="username"/>
             <TextInput source="fullname"/>
+            <TextInput source="email"/>    
+            <TextInput source="address"/>
             <TextInput source="password"/>
-      
+          
             <ReferenceInput
                 label="Role"
-                 source="role.id"
+               source="role.id"
                 reference="roles"
             >
                 <SelectInput optionText="name" />
@@ -46,10 +49,10 @@ export const editUser = (props)=>(
 export const createUser = (props)=>(
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="username"/>
-            <TextInput source="fullname"/>
+        <TextInput source="fullname"/>
+            <TextInput source="email"/>          
+            <TextInput source="address"/>
             <TextInput source="password"/>
-          
            
             <ReferenceInput
                 label="Role"

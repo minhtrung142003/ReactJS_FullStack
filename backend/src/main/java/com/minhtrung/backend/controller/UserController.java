@@ -68,7 +68,7 @@ public class UserController {
         return new ResponseEntity<>("User successfully deleted!", HttpStatus.OK);
     }
 
-    // from đăng ký 
+
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody UserDto userDto) {
         User registeredUser = userService.registerUser(userDto);
@@ -83,4 +83,5 @@ public class UserController {
             return ResponseEntity.badRequest().body("Invalid credentials");
         }
     }
+    
 }

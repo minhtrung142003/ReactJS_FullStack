@@ -21,7 +21,7 @@ export const listOrders =(props)=>(
             <TextField source="phone_number" />
             <TextField source="address" />
             <TextField source="note" />
-            <TextField source="order_data" />
+            {/* <TextField source="order_data" /> */}
             <TextField source="status" />
             <TextField source="total_money" />
             <TextField source="user.fullname" />

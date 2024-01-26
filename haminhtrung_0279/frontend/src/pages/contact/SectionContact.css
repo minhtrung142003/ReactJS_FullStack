@@ -1,0 +1,32 @@
+/* SectionContact.css */
+
+.contact-section {
+    background-color: #f8f9fa; /* Màu nền của section */
+    padding: 50px 0;
+  }
+  
+  .map-container {
+    margin-bottom: 20px;
+  }
+  
+  .map-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+  }
+  
+  .map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+  
+  .message-input {
+    height: 150px; /* Điều chỉnh chiều cao của ô nhập tin nhắn */
+  }
+  
+  /* Thêm các tùy chỉnh CSS khác tùy thuộc vào ý muốn của bạn */
+  

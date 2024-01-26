@@ -22,6 +22,7 @@ import Register from "./Register";
 import IntroduceShow from "./IntroduceShow";
 import Tuyendung from "./Tuyendung";
 import Contact from "./Contact";
+import Buy from "./Buy";
 
 const Main = () => (
     <main>
@@ -48,6 +49,7 @@ const Main = () => (
             <Route path="/introduce" element={<IntroduceShow/>}/> 
             <Route path="/tuyendung" element={<Tuyendung/>}/> 
             <Route path="/lien-he" element={<Contact/>}/> 
+            <Route path="/form-cart" element={<Buy/>}/> 
 
 
         </Routes>

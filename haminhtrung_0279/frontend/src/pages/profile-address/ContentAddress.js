@@ -1,5 +1,12 @@
 import React from "react";
-const ContentAddress = () => (
+const ContentAddress = () => {
+    const handleLogout = () => {
+        // Xóa thông tin người dùng khỏi local storage khi đăng xuất
+        localStorage.removeItem("fullname");
+        window.location.reload();
+        // Thực hiện các bước đăng xuất khác (nếu có)
+      };
+    return(
 <section class="section-content padding-y">
 	<div class="container">
 	<h2 class="title-page">My account</h2>
@@ -12,7 +19,7 @@ const ContentAddress = () => (
 				<a class="list-group-item" href="page-profile-wishlist.html"> My wishlist </a>
 				<a class="list-group-item" href="page-profile-seller.html"> My Selling Items </a>
 				<a class="list-group-item" href="page-profile-setting.html"> Settings </a>
-				<a class="list-group-item" href="page-index-1.html"> Log out </a>
+				<button onClick={handleLogout}> Log out</button>
 			</nav>
 		</aside> 
 		<main class="col-md-9">
@@ -49,4 +56,5 @@ const ContentAddress = () => (
 </div> 
 </section>
 );
+    };
 export default ContentAddress

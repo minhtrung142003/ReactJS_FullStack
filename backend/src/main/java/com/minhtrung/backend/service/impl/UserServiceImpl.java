@@ -34,12 +34,17 @@ public class UserServiceImpl implements UserService{
     public User updateUser(User user){
         User existingUser = userRepository.findById(user.getId()).get();
         existingUser.setFullname(user.getFullname());
-        existingUser.setUsername(user.getUsername());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setPhone_number(user.getPhone_number());
+        existingUser.setAddress(user.getAddress());
         existingUser.setPassword(user.getPassword());
-        existingUser.setToken(user.getToken());
+        existingUser.setCreated_at(user.getCreated_at());
+        existingUser.setUpdated_at(user.getUpdated_at());
+        existingUser.setDeleted(user.getDeleted());
+        existingUser.setTokens(user.getTokens());
         existingUser.setRole(user.getRole());
-       existingUser.setOrders(user.getOrders());
-      
+
+
         User updateUser = userRepository.save(existingUser);
         return updateUser;
     }
@@ -49,17 +54,16 @@ public class UserServiceImpl implements UserService{
         userRepository.deleteById(userId);
     }
 
-    // đăng ký
-   @Override
+     @Override
     public User registerUser(UserDto userDto) {
-        User newUser = new User(userDto.getFullname(), userDto.getUsername(), userDto.getPassword());
+        User newUser = new User(userDto.getFullname(), userDto.getEmail(), userDto.getPassword());
         return userRepository.save(newUser);
     }
 
-    @Override
-    public boolean loginUser(UserDto userDto) {
-        User userInDb = userRepository.findByUsername(userDto.getUsername());
-        return userInDb != null && userInDb.getPassword().equals(userDto.getPassword());
-    }
+        @Override
+        public boolean loginUser(UserDto userDto) {
+            User userInDb = userRepository.findByFullname(userDto.getFullname());
+            return userInDb != null && userInDb.getPassword().equals(userDto.getPassword());
+        }
 
 }

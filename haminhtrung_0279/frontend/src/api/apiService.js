@@ -30,6 +30,6 @@ export function PUT_EDIT(endpoint, data){
 export function DELETE_ID(endpoint) {
     return callApi(endpoint, 'DELETE');
 }
-const loginApi = (email, password) => {
+const loginApi = (fullname, password) => {
     return axios.post("")
 }

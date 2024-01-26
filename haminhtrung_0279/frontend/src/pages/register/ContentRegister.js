@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 const ContentRegister =()=>{
@@ -13,7 +13,6 @@ const [email, setEmail] = useState("");
   const [error, setError] = useState('');
 
 
-  
   const handleLogin = () => {
 	if ( email != "" && password != "" && fullname != "" && address != "" && phone_number != "")
 	{
@@ -36,7 +35,7 @@ const [email, setEmail] = useState("");
 		.catch((error) => {
 		  console.error(error);
 		});
-	    navigate('/');
+	    navigate('/login');
   
 	}console.error('Login failed:', error.response);
 	setError('Tên đăng nhập hoặc mật khẩu không chính xác. Hãy thử lại.');
@@ -58,7 +57,7 @@ const [email, setEmail] = useState("");
 				<form>
 					<div class="form-row">
 
-						<label>First name</label>
+						<label>Họ và tên</label>
 						<input required="name"
 						class="form-control"
 							type="fullname"
@@ -82,7 +81,7 @@ const [email, setEmail] = useState("");
 					</div>
 
 					<div class="form-row">
-						<label>Password</label>
+						<label>Mật khẩu</label>
 						<input required="password"
 						class="form-control"
 							type="password"
@@ -93,7 +92,7 @@ const [email, setEmail] = useState("");
 					</div>
 
 					<div class="form-row">
-						<label>address</label>
+						<label>Địa chỉ</label>
 						<input required="address"
 						class="form-control"
 							type="address"
@@ -104,7 +103,7 @@ const [email, setEmail] = useState("");
 					</div>
 				
 					<div class="form-row">
-						<label>Phone</label>
+						<label>Số điện thoại</label>
 						<input required="phone_number"
 						class="form-control"
 							type="phone_number"
@@ -116,7 +115,7 @@ const [email, setEmail] = useState("");
 
 					<div class="form-group">
 					{error && <p className="text-danger">{error}</p>}
-<button    onClick={handleLogin} type="submit" class="btn btn-primary btn-block"> Register  </button>
+<button    onClick={handleLogin} type="submit" class="btn btn-primary btn-block"> Đăng ký  </button>
 					</div>
 					<div class="form-group">
 						<label class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked="" /> <div class="custom-control-label"> I am agree with <a href="#">terms and contitions</a>  </div> </label>

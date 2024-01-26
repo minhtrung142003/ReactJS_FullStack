@@ -1,5 +1,6 @@
 import React from "react";
 const ContentMain = () => (
+	
 <section class="section-content padding-y">
 <div class="container">
 <h2 class="title-page">My account</h2>
